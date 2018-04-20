@@ -16,11 +16,7 @@ def read_directory(mypath):
 #Function you will be working with
 def creating_subclusters(list_of_terms, name_of_file):
 
-    # Your code that converts the cluster into subclusters and saves the output in the output folder with the same name as input file
-    #Note the writing to file has to be handled by you.
-
-    pass
-
+   pass
 
 #Main function
 if __name__ == '__main__':
