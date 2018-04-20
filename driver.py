@@ -16,10 +16,33 @@ def read_directory(mypath):
 #Function you will be working with
 def creating_subclusters(list_of_terms, name_of_file):
 
-    # Your code that converts the cluster into subclusters and saves the output in the output folder with the same name as input file
-    #Note the writing to file has to be handled by you.
+    wordcount = Counter(file.read(name_of_file).split(" "))
 
-    pass
+vectorizer = TfidfVectorizer(stop_words='english')
+X = vectorizer.fit_transform(documents)
+ 
+true_k = 2
+model = KMeans(n_clusters=true_k, init='k-means++', max_iter=wordcount, n_init=1)
+model.fit(X)
+ 
+print("Top terms per cluster:")
+order_centroids = model.cluster_centers_.argsort()[:, ::-1]
+terms = vectorizer.get_feature_names()
+for i in range(true_k):
+    print("Cluster %d:" % i),
+    for ind in order_centroids[i, :10]:
+        print(' %s' % terms[ind]),
+    print
+ 
+ 
+print(" ")
+print(Prediction)
+ 
+Y = vectorizer.transform([list_of_terms])
+prediction = model.predict(Y)
+print(prediction)
+file = open(name_of_file,”w”) 
+file.write(prediction) 
 
 
 #Main function
